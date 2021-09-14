@@ -1,0 +1,8 @@
+{
+  "name": "run-chromium",
+  "version": "0.1.0",
+  "bin": {"run-chromium": "./run.js"},
+  "dependencies": {
+    "puppeteer": "^10.2.0"
+  }
+}
