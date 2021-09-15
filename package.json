@@ -5,7 +5,6 @@
     "run-chromium": "./run.js"
   },
   "dependencies": {
-    "open": "^8.2.1",
     "puppeteer": "latest"
   }
 }
