@@ -1,8 +1,8 @@
-name: Push commit
+name: publish chromium versions
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '40 * * * *'
+    - cron:  '*/5 * * * *'
 jobs:
   report:
     runs-on: ubuntu-latest
