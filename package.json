@@ -1,10 +1,12 @@
 {
   "name": "run-chromium",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "type": "module",
   "bin": {
     "run-chromium": "./run.js"
   },
   "dependencies": {
-    "puppeteer": "latest"
+    "node-fetch": "2.6.2",
+    "puppeteer": "10.2.0"
   }
 }
