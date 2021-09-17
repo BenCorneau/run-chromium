@@ -2,7 +2,9 @@ name: publish chromium versions
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '*/5 1 * * *'
+    # '*/5    * * * *'  - every 5 minutes  (when minute is divisble by 5)
+    # '  0  */3 * * *'  - every 3 hours    (when minute is 0 and hour is divisible by 3)
+    - cron:  '0 */3 * * *'
 jobs:
   report:
     runs-on: ubuntu-latest
