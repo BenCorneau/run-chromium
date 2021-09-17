@@ -3,6 +3,8 @@
 import fetch from 'node-fetch';
 import {execFileSync, spawnSync} from 'child_process';
 import puppeteer from 'puppeteer';
+import os from 'os';
+import path from 'path';
 
 //create browserFetcher as global so we can use it to look up platform
 const browserFetcher = puppeteer.createBrowserFetcher();
@@ -71,9 +73,12 @@ async function runExactVersion(versionInfo) {
         console.log("download complete.")
     }
 
+    const dataDir = path.join(os.tmpdir(), `chromium${versionInfo.version}_${revision}_user_data_dir`);
+    console.log(`user-data-dir=${dataDir}`);
+
     //https://github.com/GoogleChrome/chrome-launcher/blob/master/docs/chrome-flags-for-tools.md
     const chromiumArgs = [
-        `--profile-directory="chromium_${revision}"`,
+        `--user-data-dir=${dataDir}`,
         '--no-first-run',
         '--no-default-browser-check',
         '--use-mock-keychain'
