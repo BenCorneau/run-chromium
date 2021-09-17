@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import fetch from 'node-fetch';
-import {exec, spawnSync} from 'child_process';
+import {execFileSync, spawnSync} from 'child_process';
 import puppeteer from 'puppeteer';
 
 //create browserFetcher as global so we can use it to look up platform
@@ -71,8 +71,17 @@ async function runExactVersion(versionInfo) {
         console.log("download complete.")
     }
 
+    //https://github.com/GoogleChrome/chrome-launcher/blob/master/docs/chrome-flags-for-tools.md
+    const chromiumArgs = [
+        `--profile-directory="chromium_${revision}"`,
+        '--no-first-run',
+        '--no-default-browser-check',
+        '--use-mock-keychain'
+    ]
+
+
     console.log(`launching '${revisionInfo.executablePath}'...`);
-    const childProc = spawnSync(revisionInfo.executablePath);//, {detached: true, stdio: 'ignore'});
+    const childProc = execFileSync(revisionInfo.executablePath, chromiumArgs);//, {detached: true, stdio: 'ignore'});
     console.log("done");
 }
 
